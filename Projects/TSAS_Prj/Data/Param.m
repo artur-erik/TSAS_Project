@@ -13,7 +13,7 @@ I  = 0.1;          % Main body inertia
 Ir = 0.001;        % Reaction wheel inertia
 IR = Ir + Jmotor;  % Total rotational inertia
 
-% Geometry / Distribution Matrix
+% Distribution Matrix
 beta_deg  = 45;
 gamma_deg = 45;
 
