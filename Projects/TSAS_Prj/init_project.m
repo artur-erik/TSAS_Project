@@ -1,22 +1,41 @@
 % --- TSAS Project Initialization ---
 clear; clc;
 
-% Load static parameters
-run('/data/params.m');
+% Load hardware parameters (Vmax, R, L, Kt, IR, etc.)
+run('Data/Param.m'); 
 
-% ACS Matrix Calculations
-% J is the mapping from wheel accelerations to body torques
-J = IR * Aw; 
-% J_plus is the pseudo-inverse for finding required wheel alpha
+% Testing Mode: 1 for Single Motor (1D), 0 for Full System (4 Motors)
+TEST_1D_MODE = 1; 
+
+if TEST_1D_MODE
+    % Configuration for 1D test
+    Aw_current = 1;
+    fprintf('TSAS: 1D Test Mode Active.\n');
+else
+    % Configuration for full 3D system
+    Aw_current = Aw; 
+    fprintf('TSAS: Full System Mode Active.\n');
+end
+
+% ACS Matrix Calculations based on Eq. 61
+J = IR * Aw_current; 
 J_plus = pinv(J);
 
-% Simulation setup
-Ts = 5e-05;        % Base sample time
-max_alpha = 50;    % Max allowed acceleration
+% Simulation settings
+Ts = 5e-05;        % Must match Solver fixed-step size
+max_alpha = 50;    % Reference acceleration limit
 
-% Controller Gains (Initial values for tuning)
-Kp_val = 0.02;     % Proportional gain (tuned in last session)
-Ki_val = 0.1;      % Integral gain
-Kd_val = 0;        % Derivative gain (currently unused)
+% System Controller Gains
+Kp_val = 0.005;     
+Ki_val = 0;      
+Kd_val = 0.00001;        
 
-disp("TSAS: Initialization complete. J_plus matrix calculated.");
+% Motors Controller Gains
+KpM_val = 0.05;     
+KiM_val = 0;      
+KdM_val = 0;  
+
+% Low pass filter
+w_lp = 2*pi*100
+
+disp("TSAS: Initialization complete.");

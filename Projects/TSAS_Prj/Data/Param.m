@@ -26,3 +26,6 @@ Aw_T = [ cg*ca,  cg*sa,  sg;
         -cg*ca, -cg*sa,  sg;
          cg*ca, -cg*sa,  sg ];
 Aw = Aw_T';
+
+% input
+input = 2
