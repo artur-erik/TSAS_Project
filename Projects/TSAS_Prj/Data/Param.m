@@ -20,7 +20,7 @@ gamma_deg = 45;
 ca = cosd(beta_deg); sa = sind(beta_deg);
 cg = cosd(gamma_deg); sg = sind(gamma_deg);
 
-% Matrix Aw_T based on orientation
+% Matrix Aw_T
 Aw_T = [ cg*ca,  cg*sa,  sg;
         -cg*ca,  cg*sa,  sg;
         -cg*ca, -cg*sa,  sg;
