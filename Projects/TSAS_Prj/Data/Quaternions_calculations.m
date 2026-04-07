@@ -1,9 +1,6 @@
 
-
-
-
-Kp_craft = 6
-Kd_craft = 7
+Kp_craft = 0.6
+Kd_craft = 0.7
 
 q_init = [1; 0; 0; 0]
 q_ref = [ 0.1118796 0.0372932 0.0559398 0.9914449 ];
@@ -12,6 +9,5 @@ q_ref = [ 0.1118796 0.0372932 0.0559398 0.9914449 ];
 % [ 0.1118796 0.0372932 0.0559398 0.9914449 ]
 % [0 1 0 0];
 
-
 Inertia = diag([2,1.5,1])
-Inertia_inv   = inv(Inertia); 
+Inertia_inv   = inv(Inertia);

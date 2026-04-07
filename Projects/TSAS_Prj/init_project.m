@@ -3,15 +3,8 @@ clear; clc;
 run('Data/Param.m'); 
 run('Data\Quaternions_calculations.m')
 
-TEST_1D_MODE = 0; 
 
-if TEST_1D_MODE
-    Aw_current = 1;
-    fprintf('TSAS: 1D Test Mode Active.\n');
-else
-    Aw_current = Aw; 
-    fprintf('TSAS: Full System Mode Active.\n');
-end
+Aw_current = Aw; 
 
 % ACS Matrix Calculations
 J = IR * Aw_current; 
