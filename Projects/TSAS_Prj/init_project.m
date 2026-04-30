@@ -5,11 +5,10 @@ run('Data\Quaternions_calculations.m')
 
 
 Aw_current = Aw; 
-
+    
 % ACS Matrix Calculations
-J = IR * Aw_current; 
-J_plus = pinv(J);
-
+J_plus = pinv(Aw_current);
+disp(J_plus)
 % Simulation settings
 Ts = 5e-05;
 max_alpha = 50;
